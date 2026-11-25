@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.playwright-mcp/
+
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+/Experts in Lab Testing Services in the UK - Virologica/
+/virologica-*.jpg
+
+.vercel/
+.env
+.env.*
+!.env.example
