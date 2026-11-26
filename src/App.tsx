@@ -114,6 +114,9 @@ function Header() {
           <a className="button button-small" href="https://meetings-eu1.hubspot.com/laura-sellars">
             Book a Consultation
           </a>
+          <a className="button button-small" href="https://virologica.co.uk/contact">
+            Contact
+          </a>
         </div>
 
         <button
