@@ -310,7 +310,6 @@ function Hero() {
             />
             <div className="hero-wash" />
           </div>
-          <HeroWave id={`hero-wave-${index}`} />
           <div className="container hero-content">
             <div className="hero-copy">
               <h2 aria-label={slide.title}>
@@ -338,6 +337,8 @@ function Hero() {
           </div>
         </article>
       ))}
+
+      <HeroWave id="hero-wave" />
 
       <div className="hero-pagination" aria-label="Choose a hero slide">
         {heroSlides.map((slide, index) => (

@@ -401,7 +401,7 @@ p {
   right: 0;
   bottom: -20px;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   height: clamp(160px, 17vw, 220px);
   overflow: hidden;
   opacity: 0.68;
@@ -413,10 +413,6 @@ p {
   width: 103%;
   height: 100%;
   transform: translateX(-1.5%);
-}
-
-.hero-slide.is-active .hero-wave svg {
-  animation: hero-wave-drift 12s ease-in-out infinite alternate;
 }
 
 .hero-content {
@@ -650,15 +646,6 @@ p {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes hero-wave-drift {
-  from {
-    transform: translate3d(-2.2%, 2px, 0) scaleY(0.98);
-  }
-  to {
-    transform: translate3d(-0.8%, -3px, 0) scaleY(1.03);
   }
 }
 
