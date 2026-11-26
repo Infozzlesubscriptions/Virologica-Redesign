@@ -576,8 +576,6 @@ function TestingServices() {
                     role="tab"
                     aria-selected={isActive}
                     aria-controls={`service-panel-${item.id}`}
-                    onMouseEnter={() => setActiveService(index)}
-                    onFocus={() => setActiveService(index)}
                     onClick={() => setActiveService(index)}
                   >
                     <span className="service-tab-number">0{index + 1}</span>
