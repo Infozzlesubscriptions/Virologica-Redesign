@@ -392,8 +392,8 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(27, 8, 50, 0.94) 0%, rgba(55, 3, 91, 0.79) 35%, rgba(33, 13, 62, 0.18) 70%),
-    linear-gradient(0deg, rgba(22, 8, 42, 0.45), transparent 40%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.12) 52%, transparent 76%),
+    linear-gradient(rgba(0, 6, 128, 0.5), rgba(0, 6, 128, 0.5));
 }
 
 .hero-wave {
@@ -2532,8 +2532,8 @@ p {
 
   .hero-wash {
     background:
-      linear-gradient(0deg, rgba(27, 8, 50, 0.95), rgba(55, 3, 91, 0.45) 75%),
-      linear-gradient(90deg, rgba(27, 8, 50, 0.5), transparent);
+      linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.08) 74%),
+      linear-gradient(rgba(0, 6, 128, 0.52), rgba(0, 6, 128, 0.52));
   }
 
   .hero-wave {
