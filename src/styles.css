@@ -404,7 +404,7 @@ p {
   z-index: 2;
   height: clamp(160px, 17vw, 220px);
   overflow: hidden;
-  opacity: 0.68;
+  opacity: 0.48;
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -2526,7 +2526,7 @@ p {
   .hero-wave {
     bottom: -8px;
     height: 132px;
-    opacity: 0.48;
+    opacity: 0.34;
   }
 
   .hero-content {
