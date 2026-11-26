@@ -712,7 +712,7 @@ function Testimonial() {
                 className={`testimonial-slide ${isActive ? "is-active" : ""}`}
                 style={
                   {
-                    "--testimonial-offset": `${offset * 82}%`,
+                    "--testimonial-offset": `${offset * 76}%`,
                     "--testimonial-order": Math.abs(offset),
                   } as React.CSSProperties
                 }

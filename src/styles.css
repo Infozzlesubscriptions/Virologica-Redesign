@@ -1350,9 +1350,9 @@ p {
   overflow: hidden;
   padding-block: 96px 88px;
   background:
-    radial-gradient(circle at 10% 14%, rgba(201, 0, 245, 0.09), transparent 30%),
-    radial-gradient(circle at 90% 78%, rgba(120, 0, 232, 0.08), transparent 28%),
-    var(--lavender);
+    radial-gradient(circle at 10% 14%, rgba(201, 0, 245, 0.06), transparent 30%),
+    radial-gradient(circle at 90% 78%, rgba(120, 0, 232, 0.05), transparent 28%),
+    #f6f2fa;
 }
 
 .testimonial-heading {
@@ -1387,6 +1387,7 @@ p {
   width: 100%;
   align-items: stretch;
   justify-items: center;
+  isolation: isolate;
 }
 
 .testimonial-slide {
@@ -1400,23 +1401,23 @@ p {
   border-radius: 26px;
   background: var(--white);
   box-shadow: 0 24px 64px rgba(37, 16, 67, 0.12);
-  opacity: 0.38;
+  opacity: 0.58;
   pointer-events: none;
   text-align: center;
-  transform: translateX(var(--testimonial-offset)) scale(0.88);
+  transform: translateX(var(--testimonial-offset)) scale(0.9);
   transition:
-    opacity 0.5s ease,
-    transform 0.65s cubic-bezier(0.2, 0.75, 0.2, 1),
-    box-shadow 0.5s ease;
+    opacity 0.65s ease,
+    transform 0.72s cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 0.65s ease;
   will-change: transform, opacity;
 }
 
 .testimonial-slide > * {
-  transition: opacity 0.3s ease;
-}
-
-.testimonial-slide:not(.is-active) > * {
-  opacity: 0;
+  opacity: 0.52;
+  filter: blur(3px);
+  transition:
+    opacity 0.55s ease,
+    filter 0.55s ease;
 }
 
 .testimonial-slide.is-active {
@@ -1424,6 +1425,11 @@ p {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0) scale(1);
+}
+
+.testimonial-slide.is-active > * {
+  opacity: 1;
+  filter: none;
 }
 
 .quote-icon {
