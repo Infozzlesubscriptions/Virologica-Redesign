@@ -425,7 +425,7 @@ p {
 
 .hero-copy {
   display: flex;
-  width: min(560px, 90%);
+  width: min(840px, 75%);
   min-height: 390px;
   align-items: flex-start;
   flex-direction: column;
@@ -435,19 +435,25 @@ p {
 }
 
 .hero-copy h2 {
-  max-width: 680px;
+  max-width: none;
   margin-bottom: 20px;
-  font-size: clamp(3rem, 5vw, 5.4rem);
+  font-size: clamp(2.75rem, 4.25vw, 4.75rem);
   line-height: 0.96;
+  white-space: nowrap;
 }
 
 .hero-word-mask {
-  display: block;
+  display: inline-block;
   width: max-content;
   max-width: 100%;
   overflow: hidden;
-  margin-right: 0;
+  margin-right: 0.22em;
   padding-bottom: 0.06em;
+  vertical-align: bottom;
+}
+
+.hero-word-mask:last-child {
+  margin-right: 0;
 }
 
 .hero-word {
@@ -489,18 +495,19 @@ p {
 
 .hero-pagination {
   position: absolute;
-  top: 32px;
-  right: max(28px, calc((100vw - 1180px) / 2));
+  bottom: 28px;
+  left: 50%;
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 4px;
+  transform: translateX(-50%);
 }
 
 .hero-pagination button {
   display: grid;
-  width: 52px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   padding: 0;
   border: 0;
@@ -510,12 +517,12 @@ p {
 
 .hero-pagination span {
   display: block;
-  width: 28px;
-  height: 3px;
+  width: 8px;
+  height: 8px;
   border-radius: 99px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   transition:
-    width 0.35s ease,
+    transform 0.3s ease,
     background 0.35s ease,
     box-shadow 0.35s ease;
 }
@@ -526,9 +533,11 @@ p {
 }
 
 .hero-pagination button.is-active span {
-  width: 48px;
-  background: linear-gradient(90deg, var(--magenta), var(--white));
-  box-shadow: 0 0 16px rgba(213, 0, 249, 0.45);
+  background: var(--white);
+  box-shadow:
+    0 0 0 4px rgba(213, 0, 249, 0.5),
+    0 0 18px rgba(213, 0, 249, 0.7);
+  transform: scale(1.1);
 }
 
 .hero-controls {
@@ -2532,6 +2541,12 @@ p {
 
   .hero-copy h2 {
     font-size: clamp(2.7rem, 14vw, 4.4rem);
+    white-space: normal;
+  }
+
+  .hero-word-mask {
+    display: block;
+    margin-right: 0;
   }
 
   .hero-cta {
@@ -2546,17 +2561,14 @@ p {
   }
 
   .hero-pagination {
-    top: 16px;
-    right: 12px;
-    gap: 2px;
+    bottom: 18px;
+    left: 50%;
+    gap: 4px;
   }
 
   .hero-pagination button {
-    width: 44px;
-  }
-
-  .hero-pagination button.is-active span {
-    width: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .intro-section {
