@@ -325,20 +325,19 @@ function Hero() {
                 ))}
               </h2>
               <p className="hero-support">{slide.text}</p>
-              <a
-                className="button button-light hero-cta"
-                href={slide.href}
-                tabIndex={index === activeSlide ? 0 : -1}
-              >
-                Learn More <span className="sr-only">about {slide.title}</span>
-                <ArrowRight size={18} aria-hidden="true" />
-              </a>
             </div>
           </div>
         </article>
       ))}
 
       <HeroWave id="hero-wave" />
+
+      <div className="container hero-cta-layer">
+        <a className="button button-light hero-cta" href={heroSlides[activeSlide].href}>
+          Learn More <span className="sr-only">about {heroSlides[activeSlide].title}</span>
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </div>
 
       <div className="hero-pagination" aria-label="Choose a hero slide">
         {heroSlides.map((slide, index) => (

@@ -430,7 +430,7 @@ p {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 52px;
+  padding-bottom: 132px;
   color: var(--white);
 }
 
@@ -463,10 +463,6 @@ p {
   animation: hero-support-reveal 0.9s 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.hero-slide.is-active .hero-cta {
-  animation: hero-support-reveal 0.85s 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 .hero-copy p {
   max-width: 460px;
   margin-bottom: 0;
@@ -475,7 +471,20 @@ p {
 }
 
 .hero-cta {
-  margin-top: 32px;
+  margin: 0;
+}
+
+.hero-cta-layer {
+  position: absolute;
+  top: calc(50% + 95px);
+  right: 0;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero-cta-layer .hero-cta {
+  pointer-events: auto;
 }
 
 .hero-pagination {
@@ -2518,7 +2527,7 @@ p {
   .hero-copy {
     width: 100%;
     min-height: 380px;
-    padding-bottom: 125px;
+    padding-bottom: 205px;
   }
 
   .hero-copy h2 {
@@ -2527,7 +2536,13 @@ p {
 
   .hero-cta {
     width: min(340px, 88vw);
-    align-self: center;
+  }
+
+  .hero-cta-layer {
+    top: auto;
+    bottom: 125px;
+    display: flex;
+    justify-content: center;
   }
 
   .hero-pagination {
