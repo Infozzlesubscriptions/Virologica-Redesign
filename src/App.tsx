@@ -295,11 +295,6 @@ function Hero() {
       aria-label="Featured testing services"
       style={{ backgroundImage: `url(${heroSlides[0].image})` }}
     >
-      <div className="hero-science" aria-hidden="true">
-        <span className="molecule molecule-one" />
-        <span className="molecule molecule-two" />
-        <span className="molecule molecule-three" />
-      </div>
       {heroSlides.map((slide, index) => (
         <article
           className={`hero-slide ${index === activeSlide ? "is-active" : ""}`}

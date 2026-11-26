@@ -385,13 +385,7 @@ p {
   height: 100%;
   backface-visibility: hidden;
   object-fit: cover;
-  transform: translateZ(0) scale(1.025);
-  transition: transform 7s ease;
-  will-change: transform;
-}
-
-.hero-slide.is-active .hero-media img {
-  transform: translateZ(0) scale(1.085);
+  transform: translateZ(0);
 }
 
 .hero-wash {
@@ -485,66 +479,6 @@ p {
 
 .hero-cta {
   margin-top: 32px;
-}
-
-.hero-science {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.molecule {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  box-shadow:
-    25px 18px 0 -3px rgba(255, 255, 255, 0.2),
-    -19px 34px 0 -2px rgba(213, 0, 249, 0.22);
-  opacity: 0.62;
-}
-
-.molecule::before,
-.molecule::after {
-  position: absolute;
-  width: 32px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent);
-  content: "";
-  transform-origin: left;
-}
-
-.molecule::before {
-  top: 7px;
-  left: 8px;
-  transform: rotate(31deg);
-}
-
-.molecule::after {
-  top: 8px;
-  left: -16px;
-  transform: rotate(118deg);
-}
-
-.molecule-one {
-  top: 20%;
-  right: 16%;
-  animation: molecule-drift 9s ease-in-out infinite;
-}
-
-.molecule-two {
-  right: 38%;
-  bottom: 22%;
-  animation: molecule-drift 12s 1.5s ease-in-out infinite reverse;
-}
-
-.molecule-three {
-  top: 28%;
-  left: 47%;
-  animation: molecule-drift 11s 0.8s ease-in-out infinite;
 }
 
 .hero-controls {
@@ -671,16 +605,6 @@ p {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes molecule-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0);
-  }
-  50% {
-    transform: translate3d(14px, -18px, 0) rotate(7deg);
   }
 }
 
