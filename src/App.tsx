@@ -612,25 +612,99 @@ function TestingServices() {
 }
 
 function Testimonial() {
-  const testimonial = (
-    <article className="testimonial-slide">
-      <Quote className="quote-icon" aria-hidden="true" />
-      <p className="testimonial-label">What Our Customers Say…</p>
-      <blockquote>
-        “Virologica delivers expert microbiology services that drive our antimicrobial innovation. Their
-        specialised knowledge and reliable support have been key to our success. We truly appreciate their
-        excellent service and expertise.”
-      </blockquote>
-      <p className="testimonial-source">Scientist, UK R&amp;D Business</p>
-    </article>
-  );
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const swipeStart = useRef<number | null>(null);
+  const testimonialCount = 3;
+
+  const moveTestimonial = (direction: number) => {
+    setActiveTestimonial((current) => (current + direction + testimonialCount) % testimonialCount);
+  };
 
   return (
     <section className="testimonial-section" aria-label="What Our Customers Say">
-      <div className="testimonial-marquee">
-        <div className="testimonial-track">
-          <div className="testimonial-group">{testimonial}{testimonial}</div>
-          <div className="testimonial-group" aria-hidden="true">{testimonial}{testimonial}</div>
+      <div className="container testimonial-heading">
+        <span className="eyebrow">Testimonials</span>
+        <h2>
+          What <span>Our Customers</span> Say
+        </h2>
+      </div>
+
+      <div
+        className="testimonial-carousel"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Customer testimonials"
+        onTouchStart={(event) => {
+          swipeStart.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          if (swipeStart.current === null) return;
+          const distance = (event.changedTouches[0]?.clientX ?? swipeStart.current) - swipeStart.current;
+          swipeStart.current = null;
+          if (Math.abs(distance) < 45) return;
+          moveTestimonial(distance < 0 ? 1 : -1);
+        }}
+      >
+        <button
+          className="testimonial-arrow testimonial-arrow-prev"
+          type="button"
+          aria-label="Previous testimonial"
+          onClick={() => moveTestimonial(-1)}
+        >
+          <ChevronLeft aria-hidden="true" />
+        </button>
+
+        <div className="testimonial-stage">
+          {Array.from({ length: testimonialCount }, (_, index) => {
+            let offset = index - activeTestimonial;
+            if (offset > 1) offset -= testimonialCount;
+            if (offset < -1) offset += testimonialCount;
+            const isActive = offset === 0;
+
+            return (
+              <article
+                className={`testimonial-slide ${isActive ? "is-active" : ""}`}
+                style={
+                  {
+                    "--testimonial-offset": `${offset * 82}%`,
+                    "--testimonial-order": Math.abs(offset),
+                  } as React.CSSProperties
+                }
+                aria-hidden={!isActive}
+                key={index}
+              >
+                <Quote className="quote-icon" aria-hidden="true" />
+                <blockquote>
+                  “Virologica delivers expert microbiology services that drive our antimicrobial innovation.
+                  Their specialised knowledge and reliable support have been key to our success. We truly
+                  appreciate their excellent service and expertise.”
+                </blockquote>
+                <p className="testimonial-source">Scientist, UK R&amp;D Business</p>
+              </article>
+            );
+          })}
+        </div>
+
+        <button
+          className="testimonial-arrow testimonial-arrow-next"
+          type="button"
+          aria-label="Next testimonial"
+          onClick={() => moveTestimonial(1)}
+        >
+          <ChevronRight aria-hidden="true" />
+        </button>
+
+        <div className="testimonial-dots" aria-label="Choose a testimonial">
+          {Array.from({ length: testimonialCount }, (_, index) => (
+            <button
+              type="button"
+              className={activeTestimonial === index ? "is-active" : ""}
+              aria-label={`Show testimonial ${index + 1}`}
+              aria-current={activeTestimonial === index}
+              onClick={() => setActiveTestimonial(index)}
+              key={index}
+            />
+          ))}
         </div>
       </div>
     </section>
