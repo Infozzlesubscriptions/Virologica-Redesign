@@ -339,6 +339,21 @@ function Hero() {
         </article>
       ))}
 
+      <div className="hero-pagination" aria-label="Choose a hero slide">
+        {heroSlides.map((slide, index) => (
+          <button
+            type="button"
+            className={index === activeSlide ? "is-active" : ""}
+            aria-label={`Show ${slide.title}`}
+            aria-current={index === activeSlide}
+            onClick={() => setActiveSlide(index)}
+            key={slide.title}
+          >
+            <span />
+          </button>
+        ))}
+      </div>
+
     </section>
   );
 }
