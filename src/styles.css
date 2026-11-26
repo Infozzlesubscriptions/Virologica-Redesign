@@ -402,9 +402,33 @@ p {
     linear-gradient(0deg, rgba(22, 8, 42, 0.45), transparent 40%);
 }
 
+.hero-wave {
+  position: absolute;
+  right: 0;
+  bottom: -20px;
+  left: 0;
+  z-index: 1;
+  height: clamp(160px, 17vw, 220px);
+  overflow: hidden;
+  opacity: 0.68;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.hero-wave svg {
+  width: 103%;
+  height: 100%;
+  transform: translateX(-1.5%);
+}
+
+.hero-slide.is-active .hero-wave svg {
+  animation: hero-wave-drift 12s ease-in-out infinite alternate;
+}
+
 .hero-content {
   position: absolute;
   inset: 0;
+  z-index: 3;
   display: flex;
   align-items: center;
 }
@@ -657,6 +681,15 @@ p {
   }
   50% {
     transform: translate3d(14px, -18px, 0) rotate(7deg);
+  }
+}
+
+@keyframes hero-wave-drift {
+  from {
+    transform: translate3d(-2.2%, 2px, 0) scaleY(0.98);
+  }
+  to {
+    transform: translate3d(-0.8%, -3px, 0) scaleY(1.03);
   }
 }
 
@@ -2514,6 +2547,12 @@ p {
     background:
       linear-gradient(0deg, rgba(27, 8, 50, 0.95), rgba(55, 3, 91, 0.45) 75%),
       linear-gradient(90deg, rgba(27, 8, 50, 0.5), transparent);
+  }
+
+  .hero-wave {
+    bottom: -8px;
+    height: 132px;
+    opacity: 0.48;
   }
 
   .hero-content {

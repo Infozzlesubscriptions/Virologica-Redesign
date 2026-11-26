@@ -216,6 +216,43 @@ function Header() {
   );
 }
 
+function HeroWave({ id }: { id: string }) {
+  const wave =
+    "M-80 162 C120 34 292 44 458 137 C646 242 792 20 982 94 C1168 166 1294 213 1520 34";
+  const crossingWave =
+    "M-60 64 C174 220 360 18 586 138 C790 247 930 22 1134 118 C1306 198 1400 202 1520 106";
+
+  return (
+    <div className="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id={`${id}-stroke`} x1="0" x2="1">
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0.16" />
+            <stop offset="0.45" stopColor="#d500f9" stopOpacity="0.9" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0.42" />
+          </linearGradient>
+          <linearGradient id={`${id}-fill`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#d500f9" stopOpacity="0.26" />
+            <stop offset="1" stopColor="#241447" stopOpacity="0" />
+          </linearGradient>
+          <pattern id={`${id}-dots`} width="12" height="12" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.15" fill="#ffffff" fillOpacity="0.42" />
+          </pattern>
+        </defs>
+
+        <path d={`${wave} L1520 280 L-80 280 Z`} fill={`url(#${id}-fill)`} />
+        <path d={`${crossingWave} L1520 280 L-80 280 Z`} fill={`url(#${id}-dots)`} opacity="0.42" />
+        <g fill="none" vectorEffect="non-scaling-stroke">
+          <path d={wave} stroke={`url(#${id}-stroke)`} strokeWidth="3" />
+          <path d={crossingWave} stroke="rgba(255,255,255,0.52)" strokeWidth="1.5" />
+          <path d={wave} stroke="rgba(213,0,249,0.34)" strokeWidth="12" opacity="0.4" />
+          <path d={crossingWave} stroke="rgba(255,255,255,0.13)" strokeWidth="15" opacity="0.34" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [imagesReady, setImagesReady] = useState(false);
@@ -278,6 +315,7 @@ function Hero() {
             />
             <div className="hero-wash" />
           </div>
+          <HeroWave id={`hero-wave-${index}`} />
           <div className="container hero-content">
             <div className="hero-copy">
               <h2 aria-label={slide.title}>
