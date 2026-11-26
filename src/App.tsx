@@ -658,9 +658,29 @@ function TestingServices() {
 }
 
 function Testimonial() {
+  const testimonials = [
+    {
+      title: "Antimicrobial Innovation",
+      quote:
+        "Virologica delivers expert microbiology services that drive our antimicrobial innovation. Their specialised knowledge and reliable support have been key to our success. We truly appreciate their excellent service and expertise.",
+      source: "Scientist, UK R&D Business",
+    },
+    {
+      title: "Invaluable Partner",
+      quote:
+        "Virologica has been an invaluable partner in providing us with environmental testing plates. Their service is always prompt and efficient, delivering detailed results with exceptional turnaround times. Their excellent communication ensures we’re always informed and supported every step of the way. We highly recommend Virologica for their professionalism and reliability.",
+      source: "Scientist, Medical Moulded Products Ltd",
+    },
+    {
+      title: "Rigorous Experimental Protocol",
+      quote:
+        "Customers needed to know that harmful viruses could be completely removed from our medical device prior to reuse. Virologica’s rigorous experimental protocol quickly delivered the clear and reliable evidence we needed.",
+      source: "Technical Manager, Healthcare Business",
+    },
+  ];
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const swipeStart = useRef<number | null>(null);
-  const testimonialCount = 3;
+  const testimonialCount = testimonials.length;
 
   const moveTestimonial = (direction: number) => {
     setActiveTestimonial((current) => (current + direction + testimonialCount) % testimonialCount);
@@ -701,7 +721,7 @@ function Testimonial() {
         </button>
 
         <div className="testimonial-stage">
-          {Array.from({ length: testimonialCount }, (_, index) => {
+          {testimonials.map((testimonial, index) => {
             let offset = index - activeTestimonial;
             if (offset > 1) offset -= testimonialCount;
             if (offset < -1) offset += testimonialCount;
@@ -717,15 +737,12 @@ function Testimonial() {
                   } as React.CSSProperties
                 }
                 aria-hidden={!isActive}
-                key={index}
+                key={testimonial.title}
               >
                 <Quote className="quote-icon" aria-hidden="true" />
-                <blockquote>
-                  “Virologica delivers expert microbiology services that drive our antimicrobial innovation.
-                  Their specialised knowledge and reliable support have been key to our success. We truly
-                  appreciate their excellent service and expertise.”
-                </blockquote>
-                <p className="testimonial-source">Scientist, UK R&amp;D Business</p>
+                <h3 className="testimonial-title">{testimonial.title}</h3>
+                <blockquote>“{testimonial.quote}”</blockquote>
+                <p className="testimonial-source">{testimonial.source}</p>
               </article>
             );
           })}
@@ -741,14 +758,14 @@ function Testimonial() {
         </button>
 
         <div className="testimonial-dots" aria-label="Choose a testimonial">
-          {Array.from({ length: testimonialCount }, (_, index) => (
+          {testimonials.map((testimonial, index) => (
             <button
               type="button"
               className={activeTestimonial === index ? "is-active" : ""}
               aria-label={`Show testimonial ${index + 1}`}
               aria-current={activeTestimonial === index}
               onClick={() => setActiveTestimonial(index)}
-              key={index}
+              key={testimonial.title}
             />
           ))}
         </div>

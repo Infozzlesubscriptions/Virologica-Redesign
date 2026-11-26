@@ -1435,16 +1435,23 @@ p {
 .quote-icon {
   width: 42px;
   height: 42px;
-  margin: 0 auto 24px;
+  margin: 0 auto 18px;
   color: var(--magenta);
   fill: rgba(213, 0, 249, 0.12);
+}
+
+.testimonial-title {
+  margin: 0 0 18px;
+  color: var(--purple);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  line-height: 1.15;
 }
 
 .testimonial-slide blockquote {
   margin: 0;
   color: var(--indigo);
   font-family: "Epilogue", sans-serif;
-  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-size: clamp(1.08rem, 1.55vw, 1.4rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.38;
